@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.spirit.R
+import kotlinx.android.synthetic.main.fragment_toning_details.*
 
 /**
  *创建者： poisunk
@@ -19,5 +20,13 @@ class ToningDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_toning_details,container,false)
+    }
+
+    fun init(){
+
+
+        fragment_toning_detail_bar_back_button.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
     }
 }
