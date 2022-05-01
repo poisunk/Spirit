@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/drawable/item_back_cricle.xml" value="0.1285" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/drawable/menu_toning.xml" value="0.1765" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
+        <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_menu.xml" value="0.109375" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_toning.xml" value="0.24947916666666667" />
+        <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_toning_recycler.xml" value="0.24564102564102563" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/item_menu.xml" value="0.4" />
+        <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/item_toning_recycler.xml" value="0.24564102564102563" />
       </map>
     </option>
   </component>

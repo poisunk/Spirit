@@ -14,21 +14,19 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val fragmentTransaction=supportFragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.activity_main,MenuFragment(),"PlaylistFragment")
-        fragmentTransaction.addToBackStack("PlaylistFragment")
-        fragmentTransaction.commit()
+        fragmentTransaction.add(R.id.activity_main,MenuFragment(),"MenuFragment")
+            .addToBackStack("MenuFragment")
+            .commit()
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            // 获取当前回退栈中的Fragment个数
-            val backStackEntryCount = fragmentManager.backStackEntryCount
-            // 回退栈中至少有多个fragment,栈底部是首页
+
+            val backStackEntryCount = supportFragmentManager.backStackEntryCount
+
             if (backStackEntryCount > 1) {
-                // 立即回退一步
-                fragmentManager.popBackStackImmediate()
+                supportFragmentManager.popBackStackImmediate()
             } else {
-                //回退栈中只剩一个时,退出应用
                 finish()
             }
         }

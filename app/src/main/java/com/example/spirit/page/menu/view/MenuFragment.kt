@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spirit.R
+import com.example.spirit.base.OnItemClickListener
 import com.example.spirit.page.menu.adapter.MenuRecyclerAdapter
-import kotlinx.android.synthetic.main.fragment_toning.*
+import com.example.spirit.page.toning.view.ToningFragment
+import kotlinx.android.synthetic.main.fragment_menu.*
 
 /**
  *创建者： poisunk
@@ -21,7 +23,7 @@ class MenuFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_toning,container,false)
+        return inflater.inflate(R.layout.fragment_menu,container,false)
     }
 
     override fun onStart() {
@@ -30,8 +32,29 @@ class MenuFragment: Fragment() {
     }
 
     private fun init(){
-        val list = listOf<Int>(1)
-        main_menu_recycler_view.adapter = MenuRecyclerAdapter(1,this)
+        initRecycler()
+
+    }
+
+    private fun initRecycler(){
+        val adapter = MenuRecyclerAdapter(1,this)
+        adapter.setOnItemClickListener(object : OnItemClickListener{
+            override fun onItemClick(view: View, position: Int) {
+                when(position){
+                    MenuRecyclerAdapter.TONING -> {
+                        switchFragment(ToningFragment(), "ToningFragment")
+                    }
+                }
+            }
+        })
+        main_menu_recycler_view.adapter = adapter
         main_menu_recycler_view.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun switchFragment(fragment:Fragment, tag:String){
+        val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.activity_main,fragment,tag)
+            .addToBackStack(tag)
+            .commit()
     }
 }

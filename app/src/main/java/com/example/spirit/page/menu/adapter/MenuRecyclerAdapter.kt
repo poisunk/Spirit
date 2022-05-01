@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.spirit.R
 import com.example.spirit.base.BaseActivity
+import com.example.spirit.base.OnItemClickListener
 
 /**
  *创建者： poisunk
@@ -20,11 +21,15 @@ import com.example.spirit.base.BaseActivity
  */
 class MenuRecyclerAdapter(private val size:Int, private val fragment:Fragment) : RecyclerView.Adapter<MenuRecyclerAdapter.ViewHolder>() {
 
-    val TONING = 0
+    companion object {
+        const val TONING = 0
+    }
+
+    private lateinit var onItemClickListener:OnItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_menu,parent,false)
-        return ViewHolder(view)
+        return ViewHolder(view,onItemClickListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -40,8 +45,22 @@ class MenuRecyclerAdapter(private val size:Int, private val fragment:Fragment) :
         return size
     }
 
-    class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+    class ViewHolder(v: View,
+                     private val onItemClickListener:OnItemClickListener)
+        : RecyclerView.ViewHolder(v), View.OnClickListener {
         val icon:ImageView = v.findViewById<ImageView>(R.id.item_menu_image)
         val text:TextView = v.findViewById<TextView>(R.id.item_menu_text)
+
+        init {
+            icon.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View) {
+            onItemClickListener.onItemClick(v, position)
+        }
+    }
+
+    fun setOnItemClickListener(onItemClickListener:OnItemClickListener){
+        this.onItemClickListener = onItemClickListener
     }
 }
