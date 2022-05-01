@@ -21,6 +21,8 @@ class ToningViewModel : ViewModel() {
 
     val fragments = ArrayList<Fragment>()
 
+    val themeList = ArrayList<String>()
+
     val colorPageLiveData = Transformations
         .switchMap(getColorPageLiveData){
             Repository.getColorPage()

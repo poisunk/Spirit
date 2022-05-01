@@ -25,7 +25,7 @@ class ToningFragment : Fragment(){
 
     private val viewModel by lazy { ViewModelProviders.of(this).get(ToningViewModel::class.java) }
 
-    private var adapter: ToningViewPaperAdapter? = null
+    private lateinit var adapter: ToningViewPaperAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,7 +57,7 @@ class ToningFragment : Fragment(){
                 initViewPaper(colorPageBean)
                 viewModel.colorPages.clear()
                 viewModel.colorPages.addAll(colorPageBean.data.list)
-                adapter?.notifyDataSetChanged()
+                adapter.notifyDataSetChanged()
             }else{
                 it.exceptionOrNull()?.printStackTrace()
             }
@@ -66,23 +66,35 @@ class ToningFragment : Fragment(){
         fragment_toning_tool_bar_back_button.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
+
+        fragment_toning_view_paper2.registerOnPageChangeCallback(object:
+            ViewPager2.OnPageChangeCallback() {
+            var currentIndex = 0
+
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                currentIndex = position
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                if(state == ViewPager2.SCROLL_STATE_IDLE){
+                    fragment_toning_tool_bar_theme.text = viewModel.themeList[currentIndex]
+                }
+            }
+        })
     }
 
     private fun initViewPaper(colorPageBean: ColorPageBean){
         viewModel.fragments.clear()
         for(list:ColorPageBean.list in colorPageBean.data.list){
             viewModel.fragments.add(ToningRecyclerFragment(list.id))
+            viewModel.themeList.add(list.theme)
         }
+        if(viewModel.themeList.size > 0)
+        fragment_toning_tool_bar_theme.text = viewModel.themeList[0]
 
-        fragment_toning_view_paper2.registerOnPageChangeCallback(object:
-            ViewPager2.OnPageChangeCallback() {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-                fragment_toning_tool_bar_theme.text = colorPageBean.data.list[position].theme
-            }
-        })
     }
 }
