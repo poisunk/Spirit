@@ -1,7 +1,6 @@
 package com.example.spirit.widget
 
 import android.annotation.SuppressLint
-import android.content.ClipData
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Canvas
@@ -37,12 +36,15 @@ class MyPointer(context:Context,
 
     private val mScroller:Scroller = Scroller(context)
 
+    private var circleDistance = 0.5f
+
 
     init {
         if(attrs != null){
             val typedArray: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.MyPointer)
             mCount = typedArray.getInt(R.styleable.MyPointer_count, mCount)
             selectedColor = typedArray.getColor(R.styleable.MyPointer_selectedColor, selectedColor)
+            circleDistance = typedArray.getFloat(R.styleable.MyPointer_circleDistance,circleDistance)
         }
         mPaint.style = Paint.Style.FILL_AND_STROKE
     }
@@ -59,7 +61,7 @@ class MyPointer(context:Context,
         midX = x + width/2
         midY = y + height/2
         radius = (height/2).toFloat()
-        circlesWidth = radius * 2.5f
+        circlesWidth = radius * 2.0f + circleDistance * radius
 
     }
 
@@ -67,7 +69,7 @@ class MyPointer(context:Context,
         super.onDraw(canvas)
         val curMidX = midX + scrollX
         for(i:Int in 0 until mCount){
-            val ItemX = midX + i * 2.5f * radius
+            val ItemX = midX + i * circlesWidth
             if(ItemX in (curMidX - measuredWidth/2)..(curMidX + measuredWidth/2)) {
                 val percentage = Math.abs(curMidX - ItemX) / (measuredWidth / 2)
                 mPaint.color = selectedColor
@@ -86,12 +88,12 @@ class MyPointer(context:Context,
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when(event.action){
             MotionEvent.ACTION_DOWN -> {
-                Log.d(TAG, "Touch:DOWN")
+//                Log.d(TAG, "Touch:DOWN")
                 mLastX = event.x
                 return true
             }
             MotionEvent.ACTION_MOVE -> {
-                Log.d(TAG,"Touch:MOVE")
+//                Log.d(TAG,"Touch:MOVE")
                 val dX = mLastX - event.x
 
                 if(scrollX + dX in 0.0f..circlesWidth * (mCount - 1)) {
@@ -125,6 +127,11 @@ class MyPointer(context:Context,
             scrollTo(mScroller.currX,mScroller.currY)
             invalidate()
         }
+    }
+
+    fun setCount(count:Int){
+        mCount = count
+        invalidate()
     }
 
 }

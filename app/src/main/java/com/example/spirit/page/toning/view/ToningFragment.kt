@@ -1,6 +1,7 @@
 package com.example.spirit.page.toning.view
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -70,7 +71,6 @@ class ToningFragment : Fragment(){
         fragment_toning_view_paper2.registerOnPageChangeCallback(object:
             ViewPager2.OnPageChangeCallback() {
             var currentIndex = 0
-
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
@@ -78,23 +78,31 @@ class ToningFragment : Fragment(){
             ) {
                 currentIndex = position
             }
-
             override fun onPageScrollStateChanged(state: Int) {
                 if(state == ViewPager2.SCROLL_STATE_IDLE){
                     fragment_toning_tool_bar_theme.text = viewModel.themeList[currentIndex]
+                    fragment_toning_tool_bar_pointer.smoothScrollToCircle(currentIndex)
                 }
             }
         })
+
+        var mStatusBarHeight:Float = 0f
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId != 0) {
+            mStatusBarHeight = resources.getDimensionPixelSize(resourceId).toFloat()
+        }
+        fragment_toning_frame.y = mStatusBarHeight
     }
 
     private fun initViewPaper(colorPageBean: ColorPageBean){
         viewModel.fragments.clear()
+        viewModel.themeList.clear()
         for(list:ColorPageBean.list in colorPageBean.data.list){
             viewModel.fragments.add(ToningRecyclerFragment(list.id))
             viewModel.themeList.add(list.theme)
         }
         if(viewModel.themeList.size > 0)
         fragment_toning_tool_bar_theme.text = viewModel.themeList[0]
-
+        fragment_toning_tool_bar_pointer.setCount(viewModel.themeList.size)
     }
 }
