@@ -1,5 +1,6 @@
 package com.example.spirit.page.toning.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.example.spirit.bean.ColorPageBean
 import com.example.spirit.page.toning.adapter.ToningViewPaperAdapter
 import com.example.spirit.page.toning.viewmodel.ToningViewModel
 import kotlinx.android.synthetic.main.fragment_toning.*
+import kotlinx.android.synthetic.main.item_menu.*
 
 /**
  *创建者： poisunk
@@ -23,6 +25,8 @@ class ToningFragment : Fragment(){
 
     private val viewModel by lazy { ViewModelProviders.of(this).get(ToningViewModel::class.java) }
 
+    private var adapter: ToningViewPaperAdapter? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,8 +36,8 @@ class ToningFragment : Fragment(){
     }
 
 
-    override fun onStart() {
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         init()
     }
 
@@ -42,18 +46,26 @@ class ToningFragment : Fragment(){
         viewModel.getColorPage()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun init(){
+        adapter = ToningViewPaperAdapter(requireActivity(),viewModel.fragments)
+        fragment_toning_view_paper2.adapter = adapter
 
-        viewModel.colorPageLiveData.observe(this, Observer {
+        viewModel.colorPageLiveData.observe(viewLifecycleOwner, Observer {
             val colorPageBean = it.getOrNull()
             if(colorPageBean?.data != null){
                 initViewPaper(colorPageBean)
                 viewModel.colorPages.clear()
                 viewModel.colorPages.addAll(colorPageBean.data.list)
+                adapter?.notifyDataSetChanged()
             }else{
                 it.exceptionOrNull()?.printStackTrace()
             }
         })
+
+        fragment_toning_tool_bar_back_button.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
     }
 
     private fun initViewPaper(colorPageBean: ColorPageBean){
@@ -61,20 +73,16 @@ class ToningFragment : Fragment(){
         for(list:ColorPageBean.list in colorPageBean.data.list){
             viewModel.fragments.add(ToningRecyclerFragment(list.id))
         }
-        val adapter = ToningViewPaperAdapter(requireActivity(),viewModel.fragments)
-        fragment_toning_view_paper2.adapter = adapter
 
-        fragment_toning_tool_bar_theme.text = colorPageBean.message
-
-//        fragment_toning_view_paper2.registerOnPageChangeCallback(object:
-//            ViewPager2.OnPageChangeCallback() {
-//            override fun onPageScrolled(
-//                position: Int,
-//                positionOffset: Float,
-//                positionOffsetPixels: Int
-//            ) {
-//                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-//            }
-//        })
+        fragment_toning_view_paper2.registerOnPageChangeCallback(object:
+            ViewPager2.OnPageChangeCallback() {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                fragment_toning_tool_bar_theme.text = colorPageBean.data.list[position].theme
+            }
+        })
     }
 }

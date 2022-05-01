@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spirit.R
 import com.example.spirit.page.toning.adapter.ToningColorsRecyclerAdapter
+import com.example.spirit.page.toning.model.ToningDataUtil
 import com.example.spirit.page.toning.viewmodel.ToningRecyclerViewModel
 import kotlinx.android.synthetic.main.fragment_toning_recycler.*
 
@@ -51,8 +52,8 @@ class ToningRecyclerFragment(private val colorPageId:Int) : Fragment() {
 
         viewModel.colorListLiveData.observe(this, Observer {
             val colorListBean = it.getOrNull()
-
             if(colorListBean?.data?.color_list != null){
+                ToningDataUtil.getColorListMessage(colorListBean.data.color_list)
                 viewModel.colorList.clear()
                 viewModel.colorList.addAll(colorListBean.data.color_list)
                 adapter.notifyDataSetChanged()

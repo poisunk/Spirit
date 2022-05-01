@@ -9,10 +9,12 @@ import com.example.spirit.bean.ColorListBean
 object ToningDataUtil {
 
 
-    fun getColorListMessage(colorList: List<ColorListBean.Color>){
-        for(color:ColorListBean.Color in colorList){
-            getColorMessage(color)
+    fun getColorListMessage(colorList:  List<ColorListBean.Color>) : List<ColorListBean.Color> {
+        for(color: ColorListBean.Color in colorList){
+            color.mes = ToningDataUtil.getColorMessage(color)
         }
+
+        return colorList
     }
 
     fun getColorMessage(color: ColorListBean.Color):String{
@@ -23,4 +25,6 @@ object ToningDataUtil {
 
         return builder.toString()
     }
+
 }
+

@@ -3,6 +3,7 @@ package com.example.spirit.page.toning.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import com.example.spirit.bean.ColorListBean
 import com.example.spirit.network.Repository
 

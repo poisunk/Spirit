@@ -4,8 +4,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import com.example.spirit.bean.ColorPageBean
 import com.example.spirit.network.Repository
+import com.example.spirit.page.toning.model.ToningDataUtil
 
 /**
  *创建者： poisunk
