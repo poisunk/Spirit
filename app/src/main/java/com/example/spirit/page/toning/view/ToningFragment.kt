@@ -1,7 +1,6 @@
 package com.example.spirit.page.toning.view
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,6 @@ import com.example.spirit.bean.ColorPageBean
 import com.example.spirit.page.toning.adapter.ToningViewPaperAdapter
 import com.example.spirit.page.toning.viewmodel.ToningViewModel
 import kotlinx.android.synthetic.main.fragment_toning.*
-import kotlinx.android.synthetic.main.item_menu.*
 
 /**
  *创建者： poisunk
@@ -52,6 +50,21 @@ class ToningFragment : Fragment(){
         adapter = ToningViewPaperAdapter(requireActivity(),viewModel.fragments)
         fragment_toning_view_paper2.adapter = adapter
 
+        initViewModelObserve()
+
+        fragment_toning_tool_bar_back_button.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+
+        var mStatusBarHeight:Float = 0f
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId != 0) {
+            mStatusBarHeight = resources.getDimensionPixelSize(resourceId).toFloat()
+        }
+        fragment_toning_frame.y = mStatusBarHeight
+    }
+
+    private fun initViewModelObserve(){
         viewModel.colorPageLiveData.observe(viewLifecycleOwner, Observer {
             val colorPageBean = it.getOrNull()
             if(colorPageBean?.data != null){
@@ -63,10 +76,18 @@ class ToningFragment : Fragment(){
                 it.exceptionOrNull()?.printStackTrace()
             }
         })
+    }
 
-        fragment_toning_tool_bar_back_button.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
+    private fun initViewPaper(colorPageBean: ColorPageBean){
+        viewModel.fragments.clear()
+        viewModel.themeList.clear()
+        for(list:ColorPageBean.list in colorPageBean.data.list){
+            viewModel.fragments.add(ToningRecyclerFragment(list.id))
+            viewModel.themeList.add(list.theme)
         }
+        if(viewModel.themeList.size > 0)
+        fragment_toning_tool_bar_theme.text = viewModel.themeList[0]
+        fragment_toning_tool_bar_pointer.setCount(viewModel.themeList.size)
 
         fragment_toning_view_paper2.registerOnPageChangeCallback(object:
             ViewPager2.OnPageChangeCallback() {
@@ -85,24 +106,5 @@ class ToningFragment : Fragment(){
                 }
             }
         })
-
-        var mStatusBarHeight:Float = 0f
-        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
-        if (resourceId != 0) {
-            mStatusBarHeight = resources.getDimensionPixelSize(resourceId).toFloat()
-        }
-        fragment_toning_frame.y = mStatusBarHeight
-    }
-
-    private fun initViewPaper(colorPageBean: ColorPageBean){
-        viewModel.fragments.clear()
-        viewModel.themeList.clear()
-        for(list:ColorPageBean.list in colorPageBean.data.list){
-            viewModel.fragments.add(ToningRecyclerFragment(list.id))
-            viewModel.themeList.add(list.theme)
-        }
-        if(viewModel.themeList.size > 0)
-        fragment_toning_tool_bar_theme.text = viewModel.themeList[0]
-        fragment_toning_tool_bar_pointer.setCount(viewModel.themeList.size)
     }
 }

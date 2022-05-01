@@ -77,7 +77,7 @@ class MyPointer(context:Context,
                     (0xff * (1.0f - percentage)).toInt()
                 val curRadius = radius * (1.0f - percentage * 0.5f)
 //                Log.d(TAG, "alpha: " + mPaint.alpha)
-                canvas.drawCircle(ItemX, midY, curRadius, mPaint)
+                canvas.drawCircle(ItemX, midY * 2 - curRadius , curRadius, mPaint)
             }
         }
     }

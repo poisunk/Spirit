@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/fragment_toning_detail_color_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="24dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="123dp"
+        android:id="@+id/fragment_toning_detail_color"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/item_toning_recycler_color_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="24dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/item_toning_recycler_color_mes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="24dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/fragment_toning_detail_shade_example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="24dp"
+        android:text="@string/color_shade_example"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp">
+        <Button
+            android:id="@+id/fragment_toning_detail_colors_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_shade_example"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_colors_2"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <Button
+            android:id="@+id/fragment_toning_detail_colors_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_shade_example"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_colors_3"
+            app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_colors_1"/>
+        <Button
+            android:id="@+id/fragment_toning_detail_colors_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_shade_example"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_colors_2"/>
+        <Button
+            android:id="@+id/fragment_toning_detail_colors_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_shade_example"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_colors_1"
+            app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_colors_5"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <Button
+            android:id="@+id/fragment_toning_detail_colors_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_shade_example"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_colors_2"
+            app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_colors_6"
+            app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_colors_4"/>
+        <Button
+            android:id="@+id/fragment_toning_detail_colors_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_shade_example"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_colors_3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_colors_5"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/fragment_toning_detail_match_example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="24dp"
+        android:text="@string/color_match_example"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp">
+
+        <View
+            android:id="@+id/fragment_toning_detail_matches_1"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_matches_2"/>
+
+        <View
+            android:id="@+id/fragment_toning_detail_matches_2"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_matches_1"
+            app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_matches_3"/>
+
+        <View
+            android:id="@+id/fragment_toning_detail_matches_3"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_matches_2"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <View
+            android:id="@+id/fragment_toning_detail_matches_4"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_matches_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_matches_5"/>
+
+        <View
+            android:id="@+id/fragment_toning_detail_matches_5"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_matches_2"
+            app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_matches_1"
+            app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_matches_6"/>
+
+        <View
+            android:id="@+id/fragment_toning_detail_matches_6"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_matches_3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_matches_5"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
