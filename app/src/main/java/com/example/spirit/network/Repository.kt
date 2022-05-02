@@ -32,7 +32,7 @@ object Repository {
 
     fun getColorDetail(id:Int) = liveData(Dispatchers.IO) {
         val result = try{
-            val colorDetailBean = Network.getColorList(id)
+            val colorDetailBean = Network.getColorDetail(id)
             Result.success(colorDetailBean)
         }catch (e:Exception){
             Result.failure(e)

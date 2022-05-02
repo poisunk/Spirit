@@ -6,11 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spirit.R
+import com.example.spirit.base.OnItemClickListener
 import com.example.spirit.page.toning.adapter.ToningColorsRecyclerAdapter
 import com.example.spirit.page.toning.model.ToningDataUtil
 import com.example.spirit.page.toning.viewmodel.ToningRecyclerViewModel
@@ -49,6 +51,14 @@ class ToningRecyclerFragment(private val colorPageId:Int) : Fragment() {
 
         fragment_toning_recycler_view.adapter = adapter
         fragment_toning_recycler_view.layoutManager = LinearLayoutManager(requireContext())
+        adapter.setOnItemClickListener(object : OnItemClickListener {
+            override fun onItemClick(view: View, position: Int) {
+                val ft = requireActivity().supportFragmentManager.beginTransaction()
+                ft.add(R.id.activity_main, ToningDetailFragment(viewModel.colorList), "ToningDetailFragment")
+                    .addToBackStack("ToningDetailFragment")
+                    .commit()
+            }
+        })
 
         viewModel.colorListLiveData.observe(this, Observer {
             val colorListBean = it.getOrNull()
