@@ -10,4 +10,6 @@
     <string name="the_sixth">己</string>
     <string name="the_seventh">庚</string>
     <string name="inspiration">灵感</string>
+    <string name="delete">删除</string>
+    <string name="collection_example">收藏示例</string>
 </resources>
