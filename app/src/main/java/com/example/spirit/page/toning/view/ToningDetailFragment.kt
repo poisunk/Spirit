@@ -12,6 +12,7 @@ import com.example.spirit.R
 import com.example.spirit.bean.ColorListBean
 import com.example.spirit.page.toning.adapter.ToningViewPaperAdapter
 import com.example.spirit.page.toning.viewmodel.ToningDetailViewModel
+import com.example.spirit.widget.MyPointer
 import kotlinx.android.synthetic.main.fragment_toning.*
 import kotlinx.android.synthetic.main.fragment_toning_details.*
 
@@ -37,10 +38,12 @@ class ToningDetailFragment(private val colorList:List<ColorListBean.Color>)
 
     fun init(){
 
+        //设置返回按钮的监听
         fragment_toning_detail_bar_back_button.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
 
+        //填充状态栏
         var mStatusBarHeight:Float = 0f
         val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
         if (resourceId != 0) {
@@ -48,7 +51,15 @@ class ToningDetailFragment(private val colorList:List<ColorListBean.Color>)
         }
         fragment_toning_detail_frame.y = mStatusBarHeight
 
+        //初始化ViewPager
         initViewPager()
+
+        //设置Pointer的监听
+        fragment_toning_detail_bar_pointer.setOnOnPointerScrollListener(object :MyPointer.OnPointerScrollListener{
+            override fun onPointerScrollFinished(position: Int) {
+                fragment_toning_detail_view_paper2.currentItem = position
+            }
+        })
     }
 
     private fun initViewPager(){

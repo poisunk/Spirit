@@ -22,9 +22,10 @@ class MainActivity : BaseActivity() {
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-
+            //退回栈中fragment的数量
             val backStackEntryCount = supportFragmentManager.backStackEntryCount
-
+            //如果数量大于1则退出fragment
+            //小于1则直接finish
             if (backStackEntryCount > 1) {
                 supportFragmentManager.popBackStackImmediate()
             } else {
