@@ -58,6 +58,8 @@ class MenuRecyclerAdapter(private val size:Int, private val fragment:Fragment) :
     class ViewHolder(v: View,
                      private val onItemClickListener:OnItemClickListener)
         : RecyclerView.ViewHolder(v), View.OnClickListener {
+
+
         val icon:ImageView = v.findViewById<ImageView>(R.id.item_menu_image)
         val text:TextView = v.findViewById<TextView>(R.id.item_menu_text)
 

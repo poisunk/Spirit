@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spirit.R
 import com.example.spirit.base.OnItemClickListener
+import com.example.spirit.page.collection.view.CollectionFragment
 import com.example.spirit.page.menu.adapter.MenuRecyclerAdapter
 import com.example.spirit.page.toning.view.ToningFragment
 import kotlinx.android.synthetic.main.fragment_menu.*
@@ -43,6 +44,9 @@ class MenuFragment: Fragment() {
                 when(position){
                     MenuRecyclerAdapter.TONING -> {
                         switchFragment(ToningFragment(), "ToningFragment")
+                    }
+                    MenuRecyclerAdapter.COLLECTION -> {
+                        switchFragment(CollectionFragment(), "CollectionFragment")
                     }
                     else ->{
                         Toast.makeText(requireContext(),"此功能还未完成",Toast.LENGTH_SHORT).show()

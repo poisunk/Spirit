@@ -78,8 +78,8 @@ class ToningDetailOfColorFragment(private val color:ColorListBean.Color) : Fragm
     private fun initShadeExample(){
         val shade_list:List<ColorDetailBean.Data.ShadeList>? = viewModel.colorDetailBean?.data?.shades?.shade_list
         if(shade_list != null) {
-            for (i: Int in 1..6) {
-                val view = fragment_toning_detail_shade_examples.getChildAt(i-1) as MyShadeCircleView
+            for (i: Int in shade_list.indices) {
+                val view = fragment_toning_detail_shade_examples.getChildAt(i) as MyShadeCircleView
                 val colorList = IntArray(shade_list[i].shade.size)
                 val shade = shade_list[i].shade
                 for(i:Int in colorList.indices){
