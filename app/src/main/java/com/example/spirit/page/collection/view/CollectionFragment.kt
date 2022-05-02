@@ -11,6 +11,7 @@ import com.example.spirit.R
 import com.example.spirit.page.collection.adapter.CollectionRecyclerAdapter
 import com.example.spirit.page.collection.model.ItemCallBack
 import kotlinx.android.synthetic.main.fragment_collection.*
+import kotlinx.android.synthetic.main.fragment_toning.*
 
 /**
  *创建者： poisunk

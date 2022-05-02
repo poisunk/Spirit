@@ -7,17 +7,19 @@
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/drawable/item_collection.xml" value="0.173" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/drawable/item_delete.xml" value="0.1855" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/drawable/item_shade_example.xml" value="0.1715" />
+        <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/drawable/layer_list_shadow.xml" value="0.1855" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/drawable/menu_inspiration.xml" value="0.173" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/drawable/menu_toning.xml" value="0.1765" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
-        <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_collection.xml" value="0.109375" />
+        <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_collection.xml" value="0.264" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_inspiration.xml" value="0.24947916666666667" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_menu.xml" value="0.109375" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_toning.xml" value="0.1" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_toning_detail_viewpager.xml" value="0.4" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_toning_details.xml" value="0.24947916666666667" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_toning_recycler.xml" value="0.24564102564102563" />
-        <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/item_collection_recycler.xml" value="0.24947916666666667" />
+        <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/fragment_toning_share.xml" value="0.24947916666666667" />
+        <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/item_collection_recycler.xml" value="0.4" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/item_inspiration_recycler.xml" value="0.14270833333333333" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/item_menu.xml" value="0.4" />
         <entry key="..\:/AndroidLearnTest/Spirit/app/src/main/res/layout/item_toning_recycler.xml" value="0.24564102564102563" />

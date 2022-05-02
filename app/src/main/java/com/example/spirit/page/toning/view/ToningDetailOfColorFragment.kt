@@ -1,6 +1,5 @@
 package com.example.spirit.page.toning.view
 
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,10 +11,9 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.spirit.R
 import com.example.spirit.bean.ColorDetailBean
 import com.example.spirit.bean.ColorListBean
-import com.example.spirit.page.toning.adapter.ToningColorsRecyclerAdapter
 import com.example.spirit.page.toning.model.ToningDataUtil
 import com.example.spirit.page.toning.viewmodel.ToningDetailViewModel
-import com.example.spirit.widget.MyShadeCircleView
+import com.example.spirit.widget.MyShadeView
 import kotlinx.android.synthetic.main.fragment_toning_detail_viewpager.*
 
 /**
@@ -79,7 +77,7 @@ class ToningDetailOfColorFragment(private val color:ColorListBean.Color) : Fragm
         val shade_list:List<ColorDetailBean.Data.ShadeList>? = viewModel.colorDetailBean?.data?.shades?.shade_list
         if(shade_list != null) {
             for (i: Int in shade_list.indices) {
-                val view = fragment_toning_detail_shade_examples.getChildAt(i) as MyShadeCircleView
+                val view = fragment_toning_detail_shade_examples.getChildAt(i) as MyShadeView
                 val colorList = IntArray(shade_list[i].shade.size)
                 val shade = shade_list[i].shade
                 for(i:Int in colorList.indices){

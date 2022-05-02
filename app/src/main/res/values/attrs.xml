@@ -6,5 +6,13 @@
         <attr name="selectedColor" format="color"/>
         <attr name="circleDistance" format="float"/>
     </declare-styleable>
+
+    <declare-styleable name="MyShadeView">
+        <attr name="shape" format="enum">
+            <enum name="circle" value="0"/>
+            <enum name="rect" value="1"/>
+        </attr>
+
+    </declare-styleable>
     
 </resources>

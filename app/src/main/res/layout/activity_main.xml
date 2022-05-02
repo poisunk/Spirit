@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".page.MainActivity">
 
-    <com.example.spirit.widget.MyShadeCircleView
+    <com.example.spirit.widget.MyShadeView
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintTop_toTopOf="parent"
