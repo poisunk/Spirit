@@ -58,7 +58,7 @@
         android:id="@+id/fragment_toning_detail_shade_example_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="24dp"
         android:text="@string/color_shade_example"
         android:textColor="@color/black"
@@ -139,6 +139,24 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_matches_2"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:textColor="@color/cardview_shadow_start_color"
+            app:layout_constraintTop_toTopOf="@+id/fragment_toning_detail_matches_1"
+            app:layout_constraintRight_toRightOf="@id/fragment_toning_detail_matches_1"
+            android:text="@string/the_second"/>
+
+        <TextView
+            android:id="@+id/fragment_toning_detail_matches_1_hex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_matches_1"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_toning_detail_matches_1"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
+
         <View
             android:id="@+id/fragment_toning_detail_matches_2"
             android:layout_width="100dp"
@@ -147,6 +165,24 @@
             app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_matches_1"
             app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_matches_3"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:textColor="@color/cardview_shadow_start_color"
+            android:text="@string/the_third"
+            app:layout_constraintTop_toTopOf="@id/fragment_toning_detail_matches_2"
+            app:layout_constraintRight_toRightOf="@id/fragment_toning_detail_matches_2"/>
+
+        <TextView
+            android:id="@+id/fragment_toning_detail_matches_2_hex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_matches_2"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_toning_detail_matches_2"/>
+
         <View
             android:id="@+id/fragment_toning_detail_matches_3"
             android:layout_width="100dp"
@@ -154,6 +190,24 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_matches_2"
             app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:textColor="@color/cardview_shadow_start_color"
+            android:text="@string/the_fourth"
+            app:layout_constraintTop_toTopOf="@id/fragment_toning_detail_matches_3"
+            app:layout_constraintRight_toRightOf="@id/fragment_toning_detail_matches_3"/>
+
+        <TextView
+            android:id="@+id/fragment_toning_detail_matches_3_hex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_matches_3"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_toning_detail_matches_3"/>
 
         <View
             android:id="@+id/fragment_toning_detail_matches_4"
@@ -164,6 +218,24 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_matches_5"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:textColor="@color/cardview_shadow_start_color"
+            android:text="@string/the_fifth"
+            app:layout_constraintTop_toTopOf="@id/fragment_toning_detail_matches_4"
+            app:layout_constraintRight_toRightOf="@id/fragment_toning_detail_matches_4" />
+
+        <TextView
+            android:id="@+id/fragment_toning_detail_matches_4_hex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_matches_4"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_toning_detail_matches_4"/>
+
         <View
             android:id="@+id/fragment_toning_detail_matches_5"
             android:layout_width="100dp"
@@ -173,6 +245,24 @@
             app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_matches_1"
             app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_matches_6"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:textColor="@color/cardview_shadow_start_color"
+            android:text="@string/the_sixth"
+            app:layout_constraintTop_toTopOf="@+id/fragment_toning_detail_matches_5"
+            app:layout_constraintRight_toRightOf="@id/fragment_toning_detail_matches_5"/>
+
+        <TextView
+            android:id="@+id/fragment_toning_detail_matches_5_hex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_matches_5"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_toning_detail_matches_5"/>
+
         <View
             android:id="@+id/fragment_toning_detail_matches_6"
             android:layout_width="100dp"
@@ -181,6 +271,24 @@
             app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_matches_3"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_matches_5"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:textColor="@color/cardview_shadow_start_color"
+            android:text="@string/the_seventh"
+            app:layout_constraintTop_toTopOf="@id/fragment_toning_detail_matches_6"
+            app:layout_constraintRight_toRightOf="@id/fragment_toning_detail_matches_6"/>
+
+        <TextView
+            android:id="@+id/fragment_toning_detail_matches_6_hex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_matches_6"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_toning_detail_matches_6"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

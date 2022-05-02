@@ -45,7 +45,6 @@ class ToningDetailOfColorFragment(private val color:ColorListBean.Color) : Fragm
     }
 
     private fun init(){
-
         viewModel.colorDetailLiveData.observe(viewLifecycleOwner, Observer {
             val colorDetailBean = it.getOrNull()
             if(colorDetailBean?.data != null){
@@ -55,7 +54,6 @@ class ToningDetailOfColorFragment(private val color:ColorListBean.Color) : Fragm
                 it.exceptionOrNull()?.printStackTrace()
             }
         })
-
     }
 
     /**
@@ -69,6 +67,8 @@ class ToningDetailOfColorFragment(private val color:ColorListBean.Color) : Fragm
         fragment_toning_detail_color_card_mes.text = ToningDataUtil.getColorMessage(color)
 
         initShadeExample()
+
+        initMatchColors()
     }
 
     /**
@@ -76,7 +76,7 @@ class ToningDetailOfColorFragment(private val color:ColorListBean.Color) : Fragm
      * 六个渐变示例逐个初始化
      */
     private fun initShadeExample(){
-        var shade_list:List<ColorDetailBean.Data.ShadeList>? = viewModel.colorDetailBean?.data?.shades?.shade_list
+        val shade_list:List<ColorDetailBean.Data.ShadeList>? = viewModel.colorDetailBean?.data?.shades?.shade_list
         if(shade_list != null) {
             for (i: Int in 1..6) {
                 val view = fragment_toning_detail_shade_examples.getChildAt(i-1) as MyShadeCircleView
@@ -89,5 +89,32 @@ class ToningDetailOfColorFragment(private val color:ColorListBean.Color) : Fragm
             }
         }
 
+    }
+
+    /**
+     * 初始化配色示例
+     */
+    private fun initMatchColors(){
+        val colors = viewModel.colorDetailBean?.data?.colors
+        if(colors != null) {
+            val hex_1 = "#" + colors.color_1.hex
+            val hex_2 = "#" + colors.color_2.hex
+            val hex_3 = "#" + colors.color_3.hex
+            val hex_4 = "#" + colors.color_4.hex
+            val hex_5 = "#" + colors.color_5.hex
+            val hex_6 = "#" + colors.color_6.hex
+            fragment_toning_detail_matches_1.setBackgroundColor(Color.parseColor(hex_1))
+            fragment_toning_detail_matches_2.setBackgroundColor(Color.parseColor(hex_2))
+            fragment_toning_detail_matches_3.setBackgroundColor(Color.parseColor(hex_3))
+            fragment_toning_detail_matches_4.setBackgroundColor(Color.parseColor(hex_4))
+            fragment_toning_detail_matches_5.setBackgroundColor(Color.parseColor(hex_5))
+            fragment_toning_detail_matches_6.setBackgroundColor(Color.parseColor(hex_6))
+            fragment_toning_detail_matches_1_hex.text = hex_1
+            fragment_toning_detail_matches_2_hex.text = hex_2
+            fragment_toning_detail_matches_3_hex.text = hex_3
+            fragment_toning_detail_matches_4_hex.text = hex_4
+            fragment_toning_detail_matches_5_hex.text = hex_5
+            fragment_toning_detail_matches_6_hex.text = hex_6
+        }
     }
 }

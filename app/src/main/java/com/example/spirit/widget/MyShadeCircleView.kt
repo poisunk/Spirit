@@ -20,7 +20,7 @@ class MyShadeCircleView(context: Context,
 
     private val mPaint = Paint()
 
-    private var defaultColors = intArrayOf(Color.CYAN, Color.BLUE)
+    private var defaultColors = intArrayOf(Color.WHITE or (0xFF shl 24), Color.WHITE or (0xFF shl 24))
 
     private var defaultPositions = floatArrayOf(0.0f, 1.0f)
 

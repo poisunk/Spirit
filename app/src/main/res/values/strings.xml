@@ -3,4 +3,10 @@
     <string name="color_shade_example">渐变示例</string>
     <string name="color_match_example">配色示例</string>
     <string name="the_first">甲</string>
+    <string name="the_second">乙</string>
+    <string name="the_third">丙</string>
+    <string name="the_fourth">丁</string>
+    <string name="the_fifth">戊</string>
+    <string name="the_sixth">己</string>
+    <string name="the_seventh">庚</string>
 </resources>
