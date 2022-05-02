@@ -1,5 +1,6 @@
 package com.example.spirit.page.toning.view
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -71,6 +72,7 @@ class ToningDetailFragment(private val colorList:List<ColorListBean.Color>)
 
         fragment_toning_detail_bar_name.text = colorList[0].name
         fragment_toning_detail_bar_pointer.setCount(colorList.size)
+        fragment_toning_detail_bar_pointer.setSelectedColor(Color.parseColor("#"+colorList[0].hex))
         fragment_toning_detail_view_paper2.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
             var currentPosition = 0
@@ -86,6 +88,7 @@ class ToningDetailFragment(private val colorList:List<ColorListBean.Color>)
                 if(state == ViewPager2.SCROLL_STATE_IDLE){
                     fragment_toning_detail_bar_name.text = colorList[currentPosition].name
                     fragment_toning_detail_bar_pointer.smoothScrollToCircle(currentPosition)
+                    fragment_toning_detail_bar_pointer.setSelectedColor(Color.parseColor("#"+colorList[currentPosition].hex))
                 }
             }
         })

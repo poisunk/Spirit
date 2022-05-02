@@ -75,6 +75,9 @@ class MyPointer(context:Context,
         //当前画面中心点的坐标
         //用于计算圆的大小和渐变
         val curMidX = midX + scrollX
+        mPaint.color = selectedColor
+
+        //依次绘制每一个点
         for(i:Int in 0 until mCount){
 
             //第i个圆的x坐标
@@ -85,7 +88,6 @@ class MyPointer(context:Context,
                 //计算圆到当前中心点的距离百分比，当到达画面边缘时为1，中心点为0
                 val percentage = abs(curMidX - ItemX) / (measuredWidth / 2)
 
-                mPaint.color = selectedColor
                 mPaint.alpha =
                     (0xff * (1.0f - percentage)).toInt()
                 val curRadius = radius * (1.0f - percentage * 0.5f)
@@ -186,6 +188,10 @@ class MyPointer(context:Context,
     fun setCount(count:Int){
         mCount = count
         invalidate()
+    }
+
+    fun setSelectedColor(color:Int){
+        this.selectedColor = color
     }
 
     private fun callBackPointerListener(position:Int){
