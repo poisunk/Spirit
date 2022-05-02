@@ -73,6 +73,7 @@
             android:id="@+id/fragment_toning_detail_shade_example_1"
             android:layout_width="96dp"
             android:layout_height="96dp"
+            app:shape="circle"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_shade_example_2"
             app:layout_constraintLeft_toLeftOf="parent"/>
@@ -80,6 +81,7 @@
             android:id="@+id/fragment_toning_detail_shade_example_2"
             android:layout_width="96dp"
             android:layout_height="96dp"
+            app:shape="circle"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_shade_example_3"
             app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_shade_example_1"/>
@@ -87,6 +89,7 @@
             android:id="@+id/fragment_toning_detail_shade_example_3"
             android:layout_width="96dp"
             android:layout_height="96dp"
+            app:shape="circle"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_shade_example_2"/>
@@ -95,6 +98,7 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_marginTop="24dp"
+            app:shape="circle"
             app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_shade_example_1"
             app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_shade_example_5"
             app:layout_constraintLeft_toLeftOf="parent"/>
@@ -103,6 +107,7 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_marginTop="24dp"
+            app:shape="circle"
             app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_shade_example_2"
             app:layout_constraintRight_toLeftOf="@id/fragment_toning_detail_shade_example_6"
             app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_shade_example_4"/>
@@ -111,6 +116,7 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_marginTop="24dp"
+            app:shape="circle"
             app:layout_constraintTop_toBottomOf="@id/fragment_toning_detail_shade_example_3"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/fragment_toning_detail_shade_example_5"/>

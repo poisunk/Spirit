@@ -66,7 +66,7 @@ class MyShadeView(context: Context,
             curPosition[i] = i.toFloat() / (colorList.size - 1)
         }
         mPaint.shader = LinearGradient(measuredWidth.toFloat()/2, 0f, measuredWidth.toFloat()/2, measuredHeight.toFloat(),
-            colorList , curPosition, Shader.TileMode.CLAMP)
+            colorList , curPosition, Shader.TileMode.MIRROR)
         invalidate()
     }
 
