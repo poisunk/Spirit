@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spirit.R
@@ -33,16 +34,18 @@ class MenuFragment: Fragment() {
 
     private fun init(){
         initRecycler()
-
     }
 
     private fun initRecycler(){
-        val adapter = MenuRecyclerAdapter(1,this)
+        val adapter = MenuRecyclerAdapter(3,this)
         adapter.setOnItemClickListener(object : OnItemClickListener{
             override fun onItemClick(view: View, position: Int) {
                 when(position){
                     MenuRecyclerAdapter.TONING -> {
                         switchFragment(ToningFragment(), "ToningFragment")
+                    }
+                    else ->{
+                        Toast.makeText(requireContext(),"此功能还未完成",Toast.LENGTH_SHORT).show()
                     }
                 }
             }

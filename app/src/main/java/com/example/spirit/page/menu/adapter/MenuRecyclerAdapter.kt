@@ -23,6 +23,8 @@ class MenuRecyclerAdapter(private val size:Int, private val fragment:Fragment) :
 
     companion object {
         const val TONING = 0
+        const val INSPIRATION = 1
+        const val COLLECTION = 2
     }
 
     private lateinit var onItemClickListener:OnItemClickListener
@@ -37,6 +39,14 @@ class MenuRecyclerAdapter(private val size:Int, private val fragment:Fragment) :
             TONING -> {
                 Glide.with(fragment).load(R.drawable.menu_toning).into(holder.icon)
                 holder.text.text = "色谱"
+            }
+            INSPIRATION -> {
+                Glide.with(fragment).load(R.drawable.menu_inspiration).into(holder.icon)
+                holder.text.text = "灵感"
+            }
+            COLLECTION ->{
+                Glide.with(fragment).load(R.drawable.menu_collection).into(holder.icon)
+                holder.text.text = "收藏"
             }
         }
     }

@@ -21,6 +21,8 @@ object Network {
 
     suspend fun getColorDetail(id:Int) = networkService.getColorDetail(id).await()
 
+    suspend fun getIdeaPage() = networkService.getIdeaPage().await()
+
     private suspend fun <T> Call<T>.await():T{
 
         return suspendCoroutine { continuation ->

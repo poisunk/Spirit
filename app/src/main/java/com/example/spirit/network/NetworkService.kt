@@ -1,8 +1,6 @@
 package com.example.spirit.network
 
-import com.example.spirit.bean.ColorDetailBean
-import com.example.spirit.bean.ColorListBean
-import com.example.spirit.bean.ColorPageBean
+import com.example.spirit.bean.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -21,4 +19,7 @@ interface NetworkService {
 
     @GET("/color/color_detail?color_detail_id=1")
     fun getColorDetail(@Query("color_detail_id") id:Int): Call<ColorDetailBean>
+
+    @GET("/idea/idea")
+    fun getIdeaPage(): Call<IdeaPageBean>
 }

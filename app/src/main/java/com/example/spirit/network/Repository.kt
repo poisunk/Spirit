@@ -12,8 +12,8 @@ object Repository {
 
     fun getColorPage() = liveData(Dispatchers.IO){
         val result=try {
-            val colorPageBean = Network.getColorPage()
-            Result.success(colorPageBean)
+            val data = Network.getColorPage()
+            Result.success(data)
         }catch (e: Exception){
             Result.failure(e)
         }
@@ -22,8 +22,8 @@ object Repository {
 
     fun getColorList(id:Int) = liveData(Dispatchers.IO) {
         val result = try{
-            val colorListBean = Network.getColorList(id)
-            Result.success(colorListBean)
+            val data = Network.getColorList(id)
+            Result.success(data)
         }catch (e:Exception){
             Result.failure(e)
         }
@@ -32,8 +32,18 @@ object Repository {
 
     fun getColorDetail(id:Int) = liveData(Dispatchers.IO) {
         val result = try{
-            val colorDetailBean = Network.getColorDetail(id)
-            Result.success(colorDetailBean)
+            val data = Network.getColorDetail(id)
+            Result.success(data)
+        }catch (e:Exception){
+            Result.failure(e)
+        }
+        emit(result)
+    }
+
+    fun getIdeaPage() = liveData(Dispatchers.IO) {
+        val result = try{
+            val data = Network.getIdeaPage()
+            Result.success(data)
         }catch (e:Exception){
             Result.failure(e)
         }
