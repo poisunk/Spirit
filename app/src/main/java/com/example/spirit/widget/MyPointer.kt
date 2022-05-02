@@ -40,6 +40,9 @@ class MyPointer(context:Context,
 
     private var circleDistance = 0.5f //圆点间的间隔距离，如果为0则圆与圆之间间隔为0，如果为1则圆与圆之间间隔一个半径
 
+    //当滑动或点击完成后的callback
+    private val myPointerCallbacks = ArrayList<OnPointerScrollListener>()
+
     //初始化属性
     init {
         if(attrs != null){
@@ -148,6 +151,9 @@ class MyPointer(context:Context,
                     }
                 smoothScrollToCircle(curIndex)
                 movedX = 0f
+
+                //对监听者们返回监听
+                callBackPointerListener(curIndex)
             }
         }
         return super.onTouchEvent(event)
@@ -180,6 +186,20 @@ class MyPointer(context:Context,
     fun setCount(count:Int){
         mCount = count
         invalidate()
+    }
+
+    private fun callBackPointerListener(position:Int){
+        for(listener:OnPointerScrollListener in myPointerCallbacks){
+            listener.onPointerScrollFinished(position)
+        }
+    }
+
+    fun setOnOnPointerScrollListener(listener:OnPointerScrollListener){
+        myPointerCallbacks.add(listener)
+    }
+
+    interface OnPointerScrollListener{
+        fun onPointerScrollFinished(position:Int)
     }
 
 }

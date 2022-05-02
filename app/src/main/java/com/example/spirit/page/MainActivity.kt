@@ -14,11 +14,10 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-//        val fragmentTransaction=supportFragmentManager.beginTransaction()
-//        fragmentTransaction.add(R.id.activity_main,MenuFragment(),"MenuFragment")
-//            .addToBackStack("MenuFragment")
-//            .commit()
+        val fragmentTransaction=supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.activity_main,MenuFragment(),"MenuFragment")
+            .addToBackStack("MenuFragment")
+            .commit()
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
