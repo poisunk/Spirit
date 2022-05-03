@@ -32,23 +32,26 @@ class MyShadeView(context: Context,
 
     //默认的渐变颜色
     //设置成白色是因为有时候加载太慢，显示其他颜色会很奇怪
-    private var defaultColors = intArrayOf(Color.BLUE , Color.WHITE)
+    private var defaultColors = intArrayOf(Color.WHITE , Color.WHITE)
 
     //默认的颜色分布
     private var defaultPositions = floatArrayOf(0.0f, 1.0f)
+
 
     init {
         if(attrs != null){
             val typedArray: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.MyShadeView)
             mShape = typedArray.getInt(R.styleable.MyShadeView_shape, mShape)
         }
-
-        mPaint.shader = LinearGradient(0f, 0f, 0f, measuredHeight.toFloat(),
-            defaultColors , defaultPositions, Shader.TileMode.CLAMP)
     }
 
+    @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        //本来不应该在onDraw里new对象，但是写在其他地方的话，会因为还没有measure导致measureHeight为0
+        //我试着把设置颜色写在onResume里但还是不行（
+        mPaint.shader = LinearGradient( measuredWidth.toFloat(), 0f,  measuredWidth.toFloat(), measuredHeight.toFloat(),
+            defaultColors , defaultPositions, Shader.TileMode.CLAMP)
         //判断绘制圆形还是矩形
         when(mShape){
             CIRCLE -> {
@@ -60,18 +63,19 @@ class MyShadeView(context: Context,
         }
     }
 
+
     /**
      * 设置渐变颜色
      * @param colorList
      */
     fun setShadeColors(colorList:IntArray){
         val curPosition = FloatArray(colorList.size)
-        val size = 1f / colorList.size
+        val size = 1f / (colorList.size - 1)
         for(i:Int in colorList.indices){
             curPosition[i] = size * i
         }
-        mPaint.shader = LinearGradient(0f, 0f, 0f, (bottom - top).toFloat(),
-            colorList , curPosition, Shader.TileMode.MIRROR)
+        defaultColors = colorList
+        defaultPositions = curPosition
         invalidate()
     }
 

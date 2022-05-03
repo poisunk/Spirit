@@ -86,7 +86,7 @@ class ToningDetailOfColorFragment(private val color:ColorListBean.Color) : Fragm
                 view.setShadeColors(colorList)
                 view.setOnClickListener {
                     val ft = requireActivity().supportFragmentManager.beginTransaction()
-                    ft.add(R.id.activity_main, ToningShareFragment(shade_list[i].shade), "ToningShareFragment")
+                    ft.add(R.id.activity_main, ToningShareFragment(shade_list[i].shade, colorList), "ToningShareFragment")
                         .addToBackStack("ToningShareFragment")
                         .commit()
                 }

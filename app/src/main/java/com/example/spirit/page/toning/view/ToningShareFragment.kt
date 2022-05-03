@@ -14,7 +14,8 @@ import kotlinx.android.synthetic.main.fragment_toning_share.*
  *创建者： poisunk
  *邮箱：1714480752@qq.com
  */
-class ToningShareFragment(private val shade:List<ColorDetailBean.Data.Shade>)
+class ToningShareFragment(private val shade:List<ColorDetailBean.Data.Shade>,
+                          private val colorList:IntArray)
     : Fragment(){
 
     override fun onCreateView(
@@ -30,6 +31,11 @@ class ToningShareFragment(private val shade:List<ColorDetailBean.Data.Shade>)
         init()
     }
 
+    override fun onResume() {
+        super.onResume()
+        initMyShadeView()
+    }
+
     private fun init(){
         fragment_toning_share_back_button.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
@@ -38,10 +44,12 @@ class ToningShareFragment(private val shade:List<ColorDetailBean.Data.Shade>)
         fragment_toning_share_collection.setOnClickListener {
 
         }
+    }
 
+    private fun initMyShadeView(){
         val colorList = IntArray(shade.size)
-        for(i:Int in shade.indices){
-            colorList[i] = Color.parseColor("#"+shade[i].color.hex)
+        for(i:Int in colorList.indices){
+            colorList[i] = Color.parseColor("#" + shade[i].color.hex)
         }
         fragment_toning_share_shade_background.setShadeColors(colorList)
     }
