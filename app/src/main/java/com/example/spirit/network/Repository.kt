@@ -40,4 +40,24 @@ object Repository {
         emit(result)
     }
 
+    fun userRegister(phoneNumber:String, name:String) = liveData(Dispatchers.IO) {
+        val result = try{
+            val data = Network.userRegister(phoneNumber,name)
+            Result.success(data)
+        }catch (e:Exception){
+            Result.failure(e)
+        }
+        emit(result)
+    }
+
+    fun userLogin(phoneNumber:String) = liveData(Dispatchers.IO) {
+        val result = try{
+            val data = Network.userLogin(phoneNumber)
+            Result.success(data)
+        }catch (e:Exception){
+            Result.failure(e)
+        }
+        emit(result)
+    }
+
 }

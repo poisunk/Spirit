@@ -23,6 +23,10 @@ object Network {
 
     suspend fun getIdeaPage() = networkService.getIdeaPage().await()
 
+    suspend fun userRegister(phoneNumber:String, name:String) = networkService.userRegister(phoneNumber, name).await()
+
+    suspend fun userLogin(phoneNumber:String) = networkService.userLogin(phoneNumber).await()
+
     private suspend fun <T> Call<T>.await():T{
 
         return suspendCoroutine { continuation ->
