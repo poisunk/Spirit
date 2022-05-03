@@ -28,10 +28,13 @@ class MyShadeView(context: Context,
 
     private val mPaint = Paint()
 
-    private var mShape = CIRCLE
+    private var mShape = CIRCLE //需要绘制的形状
 
-    private var defaultColors = intArrayOf(Color.WHITE or (0xFF shl 24), Color.WHITE or (0xFF shl 24))
+    //默认的渐变颜色
+    //设置成白色是因为有时候加载太慢，显示其他颜色会很奇怪
+    private var defaultColors = intArrayOf(Color.BLUE , Color.WHITE)
 
+    //默认的颜色分布
     private var defaultPositions = floatArrayOf(0.0f, 1.0f)
 
     init {
@@ -40,12 +43,13 @@ class MyShadeView(context: Context,
             mShape = typedArray.getInt(R.styleable.MyShadeView_shape, mShape)
         }
 
-        mPaint.shader = LinearGradient(measuredWidth.toFloat()/2, 0f, measuredWidth.toFloat()/2, measuredHeight.toFloat(),
+        mPaint.shader = LinearGradient(0f, 0f, 0f, measuredHeight.toFloat(),
             defaultColors , defaultPositions, Shader.TileMode.CLAMP)
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        //判断绘制圆形还是矩形
         when(mShape){
             CIRCLE -> {
                 canvas.drawCircle(measuredWidth.toFloat()/2, measuredHeight.toFloat()/2, measuredHeight.toFloat()/2, mPaint)
@@ -62,10 +66,11 @@ class MyShadeView(context: Context,
      */
     fun setShadeColors(colorList:IntArray){
         val curPosition = FloatArray(colorList.size)
+        val size = 1f / colorList.size
         for(i:Int in colorList.indices){
-            curPosition[i] = i.toFloat() / (colorList.size - 1)
+            curPosition[i] = size * i
         }
-        mPaint.shader = LinearGradient(measuredWidth.toFloat()/2, 0f, measuredWidth.toFloat()/2, measuredHeight.toFloat(),
+        mPaint.shader = LinearGradient(0f, 0f, 0f, (bottom - top).toFloat(),
             colorList , curPosition, Shader.TileMode.MIRROR)
         invalidate()
     }

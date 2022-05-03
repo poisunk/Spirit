@@ -17,7 +17,7 @@ interface NetworkService {
     @GET("/color/color_list")
     fun getColorList(@Query("theme_id") id:Int): Call<ColorListBean>
 
-    @GET("/color/color_detail?color_detail_id=1")
+    @GET("/color/color_detail")
     fun getColorDetail(@Query("color_detail_id") id:Int): Call<ColorDetailBean>
 
     @GET("/idea/idea")

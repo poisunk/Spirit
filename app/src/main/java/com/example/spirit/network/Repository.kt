@@ -40,13 +40,4 @@ object Repository {
         emit(result)
     }
 
-    fun getIdeaPage() = liveData(Dispatchers.IO) {
-        val result = try{
-            val data = Network.getIdeaPage()
-            Result.success(data)
-        }catch (e:Exception){
-            Result.failure(e)
-        }
-        emit(result)
-    }
 }
