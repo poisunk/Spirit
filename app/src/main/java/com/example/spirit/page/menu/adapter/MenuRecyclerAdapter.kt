@@ -1,19 +1,14 @@
 package com.example.spirit.page.menu.adapter
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.spirit.R
-import com.example.spirit.base.BaseActivity
-import com.example.spirit.base.OnItemClickListener
 
 /**
  *创建者： poisunk
@@ -27,7 +22,7 @@ class MenuRecyclerAdapter(private val size:Int, private val fragment:Fragment) :
         const val COLLECTION = 2
     }
 
-    private lateinit var onItemClickListener:OnItemClickListener
+    private lateinit var onItemClickListener: OnItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_menu,parent,false)
@@ -56,7 +51,8 @@ class MenuRecyclerAdapter(private val size:Int, private val fragment:Fragment) :
     }
 
     class ViewHolder(v: View,
-                     private val onItemClickListener:OnItemClickListener)
+                     private val onItemClickListener: OnItemClickListener
+    )
         : RecyclerView.ViewHolder(v), View.OnClickListener {
 
 
@@ -72,7 +68,7 @@ class MenuRecyclerAdapter(private val size:Int, private val fragment:Fragment) :
         }
     }
 
-    fun setOnItemClickListener(onItemClickListener:OnItemClickListener){
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener){
         this.onItemClickListener = onItemClickListener
     }
 }

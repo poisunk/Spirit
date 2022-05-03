@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spirit.R
-import com.example.spirit.base.OnItemClickListener
+import com.example.spirit.page.menu.adapter.OnItemClickListener
 import com.example.spirit.bean.ColorListBean
 
 /**
@@ -18,7 +18,7 @@ import com.example.spirit.bean.ColorListBean
 class ToningColorsRecyclerAdapter(private val list:List<ColorListBean.Color>) : RecyclerView.Adapter<ToningColorsRecyclerAdapter.ViewHolder>() {
 
 
-    private var onItemClickListener:OnItemClickListener? = null
+    private var onItemClickListener: OnItemClickListener? = null
 
 
     class ViewHolder(v:View,

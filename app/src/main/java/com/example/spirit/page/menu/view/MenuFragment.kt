@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spirit.R
-import com.example.spirit.base.OnItemClickListener
+import com.example.spirit.page.menu.adapter.OnItemClickListener
 import com.example.spirit.page.collection.view.CollectionFragment
 import com.example.spirit.page.menu.adapter.MenuRecyclerAdapter
 import com.example.spirit.page.toning.view.ToningFragment
@@ -39,7 +39,7 @@ class MenuFragment: Fragment() {
 
     private fun initRecycler(){
         val adapter = MenuRecyclerAdapter(3,this)
-        adapter.setOnItemClickListener(object : OnItemClickListener{
+        adapter.setOnItemClickListener(object : OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 when(position){
                     MenuRecyclerAdapter.TONING -> {

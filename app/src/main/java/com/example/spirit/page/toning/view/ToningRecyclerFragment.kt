@@ -2,17 +2,15 @@ package com.example.spirit.page.toning.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spirit.R
-import com.example.spirit.base.OnItemClickListener
+import com.example.spirit.page.menu.adapter.OnItemClickListener
 import com.example.spirit.page.toning.adapter.ToningColorsRecyclerAdapter
 import com.example.spirit.page.toning.model.ToningDataUtil
 import com.example.spirit.page.toning.viewmodel.ToningRecyclerViewModel
