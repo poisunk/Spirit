@@ -52,6 +52,7 @@ class MyShadeView(context: Context,
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
+        //判断线性渐变是否被初始化，或者有没有再去改变渐变的颜色
         if(mLinearGradient == null || isChangedColor){
             mLinearGradient = LinearGradient( measuredWidth.toFloat(), 0f,  measuredWidth.toFloat(), measuredHeight.toFloat(),
                 defaultColors , defaultPositions, Shader.TileMode.CLAMP)

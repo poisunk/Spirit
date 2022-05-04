@@ -40,7 +40,7 @@ class MyPointer(context:Context,
 
     private var circleDistance = 0.5f //圆点间的间隔距离，如果为0则圆与圆之间间隔为0，如果为1则圆与圆之间间隔一个半径
 
-    //当滑动或点击完成后的callback
+    //对滑动结束位置监听的监听者们
     private val myPointerCallbacks = ArrayList<OnPointerScrollListener>()
 
     //初始化属性
@@ -54,19 +54,19 @@ class MyPointer(context:Context,
         mPaint.style = Paint.Style.FILL_AND_STROKE
     }
 
-    private var midX = 0f //第一个圆的坐标
-    private var midY = 0f
+    private var firstCircleX = 0f //第一个圆的坐标
+    private var firstCircleY = 0f
     private var radius = 0f //圆的半径
-    private var circlesWidth = 0f //圆与圆之间的距离
+    private var circleSeparateWidth = 0f //圆与圆之间的距离
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height = MeasureSpec.getSize(heightMeasureSpec)
-        midX = x + width/2
-        midY = y + height/2
+        firstCircleX = x + width/2
+        firstCircleY = y + height/2
         radius = (height/2).toFloat()
-        circlesWidth = radius * 2.0f + circleDistance * radius
+        circleSeparateWidth = radius * 2.0f + circleDistance * radius
 
     }
 
@@ -74,25 +74,28 @@ class MyPointer(context:Context,
         super.onDraw(canvas)
         //当前画面中心点的坐标
         //用于计算圆的大小和渐变
-        val curMidX = midX + scrollX
+        val curMidX = firstCircleX + scrollX
         mPaint.color = selectedColor
 
         //依次绘制每一个点
         for(i:Int in 0 until mCount){
 
             //第i个圆的x坐标
-            val ItemX = midX + i * circlesWidth
+            val ItemX = firstCircleX + i * circleSeparateWidth
 
+            //如果当前要绘制的圆不在显示范围内，就不去绘制
             if(ItemX in (curMidX - measuredWidth/2)..(curMidX + measuredWidth/2)) {
 
                 //计算圆到当前中心点的距离百分比，当到达画面边缘时为1，中心点为0
                 val percentage = abs(curMidX - ItemX) / (measuredWidth / 2)
 
+                //根据百分比计算透明度与半径
                 mPaint.alpha =
                     (0xff * (1.0f - percentage)).toInt()
                 val curRadius = radius * (1.0f - percentage * 0.5f)
-//                Log.d(TAG, "alpha: " + mPaint.alpha)
-                canvas.drawCircle(ItemX, midY * 2 - curRadius , curRadius, mPaint)
+
+                //绘制
+                canvas.drawCircle(ItemX, firstCircleY * 2 - curRadius , curRadius, mPaint)
             }
         }
     }
@@ -106,36 +109,36 @@ class MyPointer(context:Context,
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when(event.action){
             MotionEvent.ACTION_DOWN -> {
-//                Log.d(TAG, "Touch:DOWN")
                 mLastX = event.x
-                return true
             }
             MotionEvent.ACTION_MOVE -> {
-//                Log.d(TAG,"Touch:MOVE")
                 val dX = mLastX - event.x
                 //记录滑动距离
                 movedX += dX
 
                 //限制滑动范围
                 when {
-                    scrollX + dX in 0.0f..circlesWidth * (mCount - 1) -> {
+                    scrollX + dX in 0.0f..circleSeparateWidth * (mCount - 1) -> {
                         scrollBy(dX.toInt(), 0)
                     }
                     scrollX + dX < 0 -> {
                         scrollBy(-scrollX, 0)
                     }
                     else -> {
-                        scrollBy((circlesWidth * (mCount - 1)).toInt() - scrollX, 0)
+                        scrollBy((circleSeparateWidth * (mCount - 1)).toInt() - scrollX, 0)
                     }
                 }
 
                 mLastX = event.x
             }
             MotionEvent.ACTION_UP -> {
+
                 //判断这次事件是点击还是滑动
                 val eventEndX:Int = if (abs(movedX) > touchSlop) {
+                    //如果是滑动
                     scrollX
                 }else{
+                    //如果是点击，判断点击是否在范围内
                     if (isInRange(event.x.toInt() - measuredWidth/2 + scrollX)){
                         event.x.toInt() - measuredWidth/2 + scrollX
                     }else{
@@ -143,10 +146,9 @@ class MyPointer(context:Context,
                     }
                 }
 
-                Log.d(TAG, "event.x = " + event.x + ",measureWidth = " + measuredWidth)
-
+                //根据当前事件的结束位置，计算要滑动到第几个圆
                 val curIndex =
-                    (eventEndX / circlesWidth).toInt() + if ( (eventEndX % circlesWidth) > circlesWidth / 2) {
+                    (eventEndX / circleSeparateWidth).toInt() + if ( (eventEndX % circleSeparateWidth) > circleSeparateWidth / 2) {
                         1
                     } else {
                         0
@@ -158,14 +160,14 @@ class MyPointer(context:Context,
                 callBackPointerListener(curIndex)
             }
         }
-        return super.onTouchEvent(event)
+        return true
     }
 
     /**
      * 光滑的滑动到index位置
      */
     fun smoothScrollToCircle(index:Int){
-        val curX = index * circlesWidth
+        val curX = index * circleSeparateWidth
         mScroller.startScroll(scrollX, 0, (curX - scrollX).toInt(), 0, 500)
         invalidate()
     }
@@ -179,7 +181,7 @@ class MyPointer(context:Context,
     }
 
     private fun isInRange(x:Number):Boolean{
-        return x.toFloat() in 0.0f..circlesWidth * (mCount - 1)
+        return x.toFloat() in 0.0f..circleSeparateWidth * (mCount - 1)
     }
 
     /**
