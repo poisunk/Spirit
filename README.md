@@ -7,7 +7,7 @@
 
 ## 主菜单
 
-![img](https://gitee.com/poisunk/image-repository/raw/master/spirit_menu.jpg)
+![spirit_menu.jpg](https://github.com/poisunk/Spirit/blob/main/intro_image/spirit_menu.jpg?raw=true)
 
 主要有三个界面，目前只实现了色谱界面，还有收藏界面。
 
@@ -15,13 +15,13 @@
 
 ## 色谱
 
-![img](https://gitee.com/poisunk/image-repository/raw/master/spirit_toning.jpg)
+![spirit_toning.jpg](https://github.com/poisunk/Spirit/blob/main/intro_image/spirit_toning.jpg?raw=true)
 
 展示不同时节的推荐配色
 
 ### 颜色详细
 
-![img](https://gitee.com/poisunk/image-repository/raw/master/spirit_toning_color.jpg)
+![spirit_toning_color.jpg](https://github.com/poisunk/Spirit/blob/main/intro_image/spirit_toning_color.jpg?raw=true)
 
 展示不同颜色的主要信息，渐变示例，与配色示例。
 
@@ -29,13 +29,13 @@
 
 ### 颜色分享
 
-![img](https://gitee.com/poisunk/image-repository/raw/master/spirit_toning_color_share.jpg)
+![spirit_toning_color_share.jpg](https://github.com/poisunk/Spirit/blob/main/intro_image/spirit_toning_color_share.jpg?raw=true)
 
 由颜色详情界面单击渐变示例打开，背景是所点击的渐变示例。
 
 ## 收藏
 
-![img](https://gitee.com/poisunk/image-repository/raw/master/spirit_collection.jpg)
+![spirit_collection.jpg](https://github.com/poisunk/Spirit/blob/main/intro_image/spirit_collection.jpg?raw=true)
 
 展示所收藏的渐变示例，示例可以拖动调换位置，也可以滑动删除。
 

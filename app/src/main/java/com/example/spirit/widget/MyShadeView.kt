@@ -37,6 +37,9 @@ class MyShadeView(context: Context,
     //默认的颜色分布
     private var defaultPositions = floatArrayOf(0.0f, 1.0f)
 
+    private var mLinearGradient: LinearGradient? = null
+
+    private var isChangedColor:Boolean = false
 
     init {
         if(attrs != null){
@@ -48,10 +51,15 @@ class MyShadeView(context: Context,
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        //本来不应该在onDraw里new对象，但是写在其他地方的话，会因为还没有measure导致measureHeight为0
-        //我试着把设置颜色写在onResume里但还是不行（
-        mPaint.shader = LinearGradient( measuredWidth.toFloat(), 0f,  measuredWidth.toFloat(), measuredHeight.toFloat(),
-            defaultColors , defaultPositions, Shader.TileMode.CLAMP)
+
+        if(mLinearGradient == null || isChangedColor){
+            mLinearGradient = LinearGradient( measuredWidth.toFloat(), 0f,  measuredWidth.toFloat(), measuredHeight.toFloat(),
+                defaultColors , defaultPositions, Shader.TileMode.CLAMP)
+            isChangedColor = false
+        }
+        mPaint.shader = mLinearGradient
+
+
         //判断绘制圆形还是矩形
         when(mShape){
             CIRCLE -> {
@@ -76,6 +84,9 @@ class MyShadeView(context: Context,
         }
         defaultColors = colorList
         defaultPositions = curPosition
+
+        isChangedColor = true
+
         invalidate()
     }
 
