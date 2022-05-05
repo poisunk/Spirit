@@ -60,8 +60,10 @@ class MenuFragment: Fragment() {
 
     private fun switchFragment(fragment:Fragment, tag:String){
         val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.activity_main,fragment,tag)
+        fragmentTransaction.setCustomAnimations(R.anim.fragment_enter, R.anim.fragment_exit, R.anim.fragment_pop_enter, R.anim.fragment_pop_exit)
+            .add(R.id.activity_main, fragment, tag)
             .addToBackStack(tag)
+            .hide(this)
             .commit()
     }
 }
